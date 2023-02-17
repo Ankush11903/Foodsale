@@ -3,14 +3,14 @@ import ReactDOM from "react-dom/client";
 import logo from "./logo.jpg";
 
 const Logo = () => {
-  return <img className="logo" src={logo} alt="Food Image" />;
+  return <img class="w-[5rem]" src={logo} alt="Food Image" />;
 };
 const Header = () => {
   return (
-    <div className="header">
+    <div class="flex w-auto m-2 justify-between border border-red-500">
       <Logo />
-      <div className="nav-items">
-      <ul >
+      <div  class="w-auto">
+      <ul class="flex w-auto justify-evenly border rounded-lg border-red-500">
           <li>Home</li>
           <li>About</li>
           <li>Contact</li>
