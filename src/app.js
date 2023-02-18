@@ -3,14 +3,17 @@ import ReactDOM from "react-dom/client";
 import logo from "./logo.jpg";
 
 const Logo = () => {
-  return <img class="w-[5rem]" src={logo} alt="Food Image" />;
+  return <img class="w-[5rem] rounded-full " src={logo} alt="Food Image" />;
+  // background-color: #fff;
+  //   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  //   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
 };
 const Header = () => {
   return (
-    <div class="flex w-auto m-2 justify-between border border-red-500">
+    <div class="flex  bg-gradient-to-r from-orange-500 to-amber-400 px-2 w-auto  justify-between  ">
       <Logo />
-      <div  class="w-auto">
-      <ul class="flex w-auto justify-evenly border rounded-lg border-red-500">
+      <div class="w-auto py-6">
+      <ul class="flex w-auto space-x-24 text-2xl font-medium  ">
           <li>Home</li>
           <li>About</li>
           <li>Contact</li>
