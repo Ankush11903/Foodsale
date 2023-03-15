@@ -4,7 +4,7 @@ import logo from "./logo.jpg";
 
 const Logo = () => {
   return <img class="w-[5rem] rounded-full " src={logo} alt="Food Image" />;
-  // background-color: #fff;
+  // background-color: #fff;dfd
   //   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   //   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(0,212,255,1) 100%);
 };
@@ -48,15 +48,24 @@ const FoodList = () => {
   );
 };
 
+const Body = () => {
+  return (
+    <div class="flex justify-center items-center border border-red-600">
+      <FoodList />
+      <FoodList />
+    </div>
+  );
+};
 
 
 const App = () => {
   return (
     <div>
-      {/* <h1>React App</h1> */}
       <Header />
+      <Body />
     </div>
   );
 };
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<App />);
+
