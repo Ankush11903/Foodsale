@@ -3,13 +3,6 @@ import RestaurantCard from "./RestaurantCard";
 import { useState } from "react";
 
 
-// function filterData(searchText, restaurants) {
-//   const filterData = restaurants.filter((restaurant) =>
-//     restaurant.data.name.includes(searchText)
-//   );
-
-//   return filterData;
-// }
 
 const Body = () => {
   // const [restaurants, setRestaurants] = useState(restaurantList);
