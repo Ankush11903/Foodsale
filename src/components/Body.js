@@ -1,6 +1,6 @@
 import  restaurantList  from "../config";
 import RestaurantCard from "./RestaurantCard";
-import { useState } from "react";
+// import { useState } from "react";
 
 // What is state
 // what is React Hooks? - functions,
