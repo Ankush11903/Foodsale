@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 import logo from "../logo.jpg";
 
 const Logo = () => {
@@ -6,6 +6,7 @@ const Logo = () => {
   };
 
 const Header = () => {
+  const [login, setLogin] = useState(false)
     return (
       <div className="flex  bg-gradient-to-r from-orange-500 to-amber-400 px-2 w-auto  justify-between  ">
         <Logo />
@@ -17,6 +18,7 @@ const Header = () => {
             <li>
               <i className="fa-solid fa-cart-shopping"></i>
             </li>
+            {login ? <button onClick={()=>setLogin(false)}>Logout</button> : <button onClick={()=>setLogin(true)}>Login</button>}
           </ul>
         </div>
       </div>
