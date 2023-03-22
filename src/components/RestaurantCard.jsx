@@ -1,13 +1,15 @@
 import react from "react";
+import {Link} from "react-router-dom";
 
 const RestraurantCard = ({
     name,
     cuisines,
     avgRating,
     cloudinaryImageId,
+    id,
   }) => {
     return (
-      <div className="w-[254px]  relative  p-3 m-3 border border-black flex-wrap break-words">
+      <Link to={'/restaurant/'+id}><div className="w-[254px]  relative  p-3 m-3 border border-black flex-wrap break-words">
         {/* {console.log(name)} */}
         <img
           className="w-full"
@@ -20,7 +22,7 @@ const RestraurantCard = ({
         <h1>{name}</h1>
         <h6 className="font-thin text-xs">{cuisines?.join(",")}</h6>
         <h2>{avgRating} Star</h2>
-      </div>
+      </div></Link>
     );
   };
 export default RestraurantCard;
