@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from "../logo.jpg";
+import { Link } from "react-router-dom";
 
 const Logo = () => {
     return <img className="w-[5rem] rounded-full " src={logo} alt="Food Image" />;
@@ -12,9 +13,14 @@ const Header = () => {
         <Logo />
         <div className="w-auto py-6">
           <ul className="flex w-auto space-x-24 text-2xl font-medium  ">
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
+            <li>
+            <Link to='/'>Home</Link>
+            </li>
+            <li>
+              <Link to='/about'>About</Link>
+            </li>
+            <li>
+            <Link to='/contact'>Contact</Link></li>
             <li>
               <i className="fa-solid fa-cart-shopping"></i>
             </li>

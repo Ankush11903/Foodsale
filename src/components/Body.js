@@ -2,6 +2,8 @@ import restaurantList from "../config";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
+import {Link} from 'react-router-dom';
+
 
 function fliterData(restaurant, searchText) {
   console.log(restaurant);
@@ -10,6 +12,7 @@ function fliterData(restaurant, searchText) {
   );
   return filterData;
 }
+
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
@@ -28,9 +31,9 @@ const Body = () => {
     );
     let da = await response.json();
     // console.log(da);
-    setRestaurant(da?.data?.cards[2].data.data.cards);
+    setRestaurant(da?.data?.cards[2]?.data?.data?.cards);
     console.log(restaurant);
-    setAllRestaurant(da?.data?.cards[2].data.data.cards);
+    setAllRestaurant(da?.data?.cards[2]?.data?.data?.cards);
     // console.log(allRestaurant);
     setLoading(false);
   }
@@ -62,7 +65,7 @@ const Body = () => {
         {restaurant?.length === 0 ? (
           <Shimmer />
         ) : (
-          restaurant.map((restaurant) => {
+          restaurant?.map((restaurant) => {
             return (
               <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
             );
