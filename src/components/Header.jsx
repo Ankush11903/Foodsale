@@ -9,7 +9,7 @@ const Logo = () => {
 const Header = () => {
   const [login, setLogin] = useState(false)
     return (
-      <div className="flex  bg-gradient-to-r from-orange-500 to-amber-400 px-2 w-auto  justify-between  ">
+      <div className="flex  bg-gradient-to-r from-orange-300 to-orange-400 px-2 w-auto  justify-between  ">
         <Logo />
         <div className="w-auto py-6">
           <ul className="flex w-auto space-x-24 text-2xl font-medium  ">
