@@ -9,16 +9,18 @@ import Error from './Error'
 import About from "./About";
 import Contact from './Contact';
 import RestaurantMenu from './RestaurantMenu'
+import { Provider } from "react-redux";
+import store from "../utils/Store";
 
 
 
 const App = () => {
   return (
-    <div>
+    <Provider store={store}>
       <Header />
       <Outlet />
       <Footer />
-    </div>
+    </Provider>
   );
 };
 
