@@ -11,7 +11,7 @@ import Contact from './Contact';
 import RestaurantMenu from './RestaurantMenu'
 import { Provider } from "react-redux";
 import store from "../utils/Store";
-
+import Cart from "./Cart";
 
 
 const App = () => {
@@ -45,6 +45,10 @@ const appRouter= createBrowserRouter([
       {
         path:"/Restaurant/:id",
         element:<RestaurantMenu />,
+      },
+      {
+        path:"/cart",
+        element:<Cart />,
       }
     ]
 

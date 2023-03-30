@@ -8,8 +8,8 @@ const Logo = () => {
   };
 
 const Header = () => {
-  const cartItems=useSelector((store)=> store.cart.items);
-  console.log(cartItems)
+  const totalItemsCount = useSelector((store) => store.cart.totalItemsCount);
+  // console.log(cartItems)
   const [login, setLogin] = useState(false)
     return (
       <div className="flex  bg-gradient-to-r from-orange-300 to-orange-400 px-2 w-auto  justify-between  ">
@@ -25,7 +25,7 @@ const Header = () => {
             <li>
             <Link to='/contact'>Contact</Link></li>
             <li>
-              <i className="fa-solid fa-cart-shopping">Cart : {cartItems.length} </i>
+            <Link to='/cart'><i className="fa-solid fa-cart-shopping">Cart : {totalItemsCount} </i></Link>
             </li>
             {login ? <button onClick={()=>setLogin(false)}>Logout</button> : <button onClick={()=>setLogin(true)}>Login</button>}
           </ul>
