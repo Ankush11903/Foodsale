@@ -40,10 +40,10 @@ const Body = () => {
   
   return (
     <>
-      <div className="search-container">
+      <div className="search-container mx-72 py-6 flex">
         <input
           type="text"
-          className="search-input"
+          className="search-input border border-[#e4e3e3] rounded-md"
           placeholder="Search"
           value={searchText}
           onChange={(e) => {
@@ -52,7 +52,7 @@ const Body = () => {
           }}
         />
         <button
-          className="search-btn"
+          className="search-btn mx-3"
           onClick={() => {
             let data = fliterData(allRestaurant, searchText);
             setRestaurant(data);
@@ -61,7 +61,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-center">
         {restaurant?.length === 0 ? (
           <Shimmer />
         ) : (

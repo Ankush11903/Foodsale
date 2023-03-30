@@ -13,8 +13,8 @@ const addItemHandler=(item)=>{
 }
 
   return (
-    <div className="flex">
-    <div className="flex w-full">
+    <div className="flex ">
+    <div className="flex w-full ">
       <div className="flex pt-7">
         <img
           className="w-[120px] h-[120px] rounded-2xl"
@@ -62,7 +62,7 @@ const RestaurantMenu = () => {
     const data = json?.data;
     // console.log(data);
     const menuItems =
-      data.cards[2].groupedCard.cardGroupMap.REGULAR.cards
+      data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
         ?.map((x) => x.card?.card)
         ?.filter(
           (x) =>

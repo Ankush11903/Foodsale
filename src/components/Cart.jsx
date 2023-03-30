@@ -3,7 +3,7 @@ import CartCard from "./cartCard.jsx";
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
   return (
-    <div className="flex">
+    <div className="flex flex-wrap justify-center">
       {Object.values(cartItems).map((item) => {
         return (
           <CartCard {...item} key={item.id}/>

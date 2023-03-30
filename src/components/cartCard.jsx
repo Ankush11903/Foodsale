@@ -9,7 +9,7 @@ const CartCard = (item) => {
   };
 
     return (
-      <div className="p-4">
+      <div className="p-4  border border-red-400 w-[254px]  relative  m-3  flex-wrap break-words">
         <img
           className="w-[120px] h-[120px] rounded-2xl"
           src={
@@ -20,7 +20,7 @@ const CartCard = (item) => {
         />
         <h1>{item.name}</h1>
         <h2>{item.price ? item.price / 100 : item.defaultPrice / 100}</h2>
-        <h3>{item.description}</h3>
+        {/* <h3>{item.description}</h3> */}
         <h3 className="text-lg font-semibold">Quantity - {item.quantity}</h3>
         <button className="bg-blue-300" onClick={()=>removeItemHandler(item)}>Remove</button>
 
