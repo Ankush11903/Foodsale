@@ -8,6 +8,17 @@ const RestraurantCard = ({
     cloudinaryImageId,
     id,
   }) => {
+    if(!cloudinaryImageId) return (
+      <Link to={'/restaurant/'+id}><div
+      className="w-[254px]  relative  p-3 m-3  flex-wrap break-words"
+            >
+              <div className="animate-pulse w-full h-[135px] border border-neutral-300 rounded-md bg-gray-400"></div>
+
+              <h1 className="py-2">{name}</h1>
+        <h6 className="font-thin text-xs">{cuisines?.join(",")}</h6>
+        <h2>{avgRating} Star</h2>
+            </div></Link>
+    )
     return (
       <Link to={'/restaurant/'+id}><div className="w-[254px]  relative  p-3 m-3  flex-wrap break-words">
         {/* {console.log(name)} */}
