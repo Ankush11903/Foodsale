@@ -12,13 +12,27 @@ const cartSlice=createSlice({
         addItem: (state, action) => {
           console.log(action.payload)
             const item = state.items[action.payload.menuItem.id];
+            console.log(item)
             const quantity =
               item && item.hasOwnProperty("quantity")
                 ? state.items[action.payload.menuItem.id]?.quantity + action.payload.value
                 : action.payload.value;
             state.items[action.payload.menuItem.id] = { ...action.payload.menuItem, quantity };
             state.totalItemsCount+=action.payload.value;
+            
           },
+          addItemByOne: (state, action) => {
+            console.log(action.payload)
+              const item = state.items[action.payload.id];
+              console.log(item)
+              const quantity =
+                item && item.hasOwnProperty("quantity")
+                  ? state.items[action.payload.id]?.quantity + 1
+                  : 1;
+              state.items[action.payload.id] = { ...action.payload, quantity };
+              state.totalItemsCount+=1;
+              
+            },
         removeItem: (state, action) => {
             const item = state.items[action.payload];
             // console.log(item);
@@ -38,5 +52,5 @@ const cartSlice=createSlice({
 });
 
 
-export const{addItem,removeItem,clearAllItem,setItem} = cartSlice.actions;
+export const{addItem,removeItem,clearAllItem,setItem,addItemByOne} = cartSlice.actions;
 export default cartSlice.reducer;

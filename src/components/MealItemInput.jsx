@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 
 
 const MealItemInput = ({addItemHandler,menuItem}) => {
-  const [amountIsValid, setAmountIsValid] = useState(true);
+  const [amountIsValid] = useState(true);
   const amountInputRef = useRef();
   const obj={
     value: 0,

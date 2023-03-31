@@ -8,14 +8,12 @@ import { removeItem,addItem } from "../utils/CartSlice";
 
 const item = ({ item }) => {
 
-    const menuItem = useSelector((store) => store?.cart?.items);
 
   const dispatch = useDispatch();
   const [itemCount, setItemCount] = useState(0);
 
   const addItemHandler = (item) => {
     dispatch(addItem(item)); // redux send action object to store {payload : item}
-    setItemCount(itemCount + 1);
   };
 
   const handleRemoveItem = (id) => {
@@ -49,7 +47,7 @@ const item = ({ item }) => {
       </div>
       
     </div>
-    <MealItemInput addItemHandler={addItemHandler} menuItem={menuItem}/>
+    <MealItemInput addItemHandler={addItemHandler} menuItem={item}/>
     </div>
   );
 };
