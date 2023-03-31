@@ -35,6 +35,11 @@ const Body = () => {
     console.log(restaurant);
     setAllRestaurant(da?.data?.cards[2]?.data?.data?.cards);
     // console.log(allRestaurant);
+
+
+
+
+    
     setLoading(false);
   }
   
