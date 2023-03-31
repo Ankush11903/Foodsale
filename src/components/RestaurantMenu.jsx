@@ -4,13 +4,14 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../utils/CartSlice";
 import MealItemInput from "./MealItemInput";
 
+import ShowContent from "./showContent";
+
 
 
 const RestaurantItem = (menuItem) => {
   const dispatch=useDispatch();
 
 const addItemHandler=(item)=>{
-  // console.log(item)
   dispatch(addItem(item));
 }
 
@@ -46,6 +47,7 @@ const addItemHandler=(item)=>{
 const RestaurantMenu = () => {
   const [restaurantTop, setRestaurantTop] = useState(null);
   const [menuRestaurant, setMenuRestaurant] = useState([]);
+  
 
   useEffect(() => {
     getRestaurantInfo();
@@ -67,17 +69,14 @@ const RestaurantMenu = () => {
           (x) =>
             x["@type"] ==
             "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-        )
-        ?.map((x) => x.itemCards)
-        .flat()
-        .map((x) => x.card?.info) || [];
+        );
     // console.log(menuItems);
     setMenuRestaurant(menuItems);
     setRestaurantTop(data);
     // info : res_data.data.cards[0].card.card.info,
-    console.log("eh")
-    console.log(data?.cards[0]?.card?.card?.info);
-    // console.log("restaurant");
+    // console.log("eh")
+    // console.log(data?.cards[0]?.card?.card?.info);
+    // console.log(menuRestaurant);
   }
 
   const { id } = useParams();
@@ -117,17 +116,16 @@ const RestaurantMenu = () => {
       </div>
       <hr class="w-48 h-1 mx-auto my-4 bg-gray-100 border-0 rounded md:my-4 dark:bg-gray-700" />
 
-      <h1 className="text-lg font-bold mx-[250px] text-center">MENU</h1>
-      <div className="mx-[250px]">
-        {/* {console.log(restaurantTop)} */}
-        <h1 className="text-xl font-semibold text-gray-600">Recommanded</h1>
-        <h4>{menuRestaurant.length} Items</h4>
-        {/* {console.log(menuRestaurant)} */}
-        {menuRestaurant.map((menuItem) => {
-          return <RestaurantItem {...menuItem} key={menuItem.id} />;
-        })}
-      </div>
-    </div>
+
+      {console.log(menuRestaurant)}
+      
+      {menuRestaurant?.map((menu) => (<ShowContent menu={menu} />))}
+      
+      
+      
+     </div>
+    // </div>
+    // </div>
   );
 };
 export default RestaurantMenu;
