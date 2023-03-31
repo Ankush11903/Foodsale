@@ -10,7 +10,7 @@ const RestaurantItem = (menuItem) => {
   const dispatch=useDispatch();
 
 const addItemHandler=(item)=>{
-  console.log(item)
+  // console.log(item)
   dispatch(addItem(item));
 }
 
@@ -71,9 +71,12 @@ const RestaurantMenu = () => {
         ?.map((x) => x.itemCards)
         .flat()
         .map((x) => x.card?.info) || [];
-    console.log(menuItems);
+    // console.log(menuItems);
     setMenuRestaurant(menuItems);
     setRestaurantTop(data);
+    // info : res_data.data.cards[0].card.card.info,
+    console.log("eh")
+    console.log(data?.cards[0]?.card?.card?.info);
     // console.log("restaurant");
   }
 

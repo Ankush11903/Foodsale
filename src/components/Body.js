@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 
 
 function fliterData(restaurant, searchText) {
-  console.log(restaurant);
+  // console.log(restaurant);
   const filterData = restaurant.filter((restaurants) =>
     restaurants?.name?.toLowerCase().includes(searchText.toLowerCase())
   );
@@ -82,13 +82,13 @@ const Body = () => {
   }
   
   useEffect(() => {
-    console.log("calling")
+    // console.log("calling")
     callApiHandler2();
     // setLoading(false);
     // loading=false;
 
     return () => {
-      console.log("unmounting")
+      // console.log("unmounting")
       // loading=false;
       // setLoading(false);
     }
@@ -109,7 +109,7 @@ const Body = () => {
         
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
     
   };

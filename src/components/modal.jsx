@@ -34,7 +34,7 @@ function Modal2({ open, onClose, children }) {
 function Modal() {
   const [showModal2, setShowModal2] = useState(false);
   const cartItems = useSelector((store) => store.cart.totalItemsCount);
-  console.log(cartItems)
+  // console.log(cartItems)
 
   return (
     <div className="flex items-center justify-center">
@@ -44,7 +44,7 @@ function Modal() {
         </span>
 
         <span className="font-bold text-xs my-2 text-white">Your Cart</span>
-        <span className=" px-3  text-white">{cartItems}</span>
+        <span className=" px-1 font-bold text-lg pt-[0.14rem]  text-white">{cartItems}</span>
       </button>
       <Modal2 open={showModal2} onClose={() => setShowModal2(false)}>
         <ShowCart />

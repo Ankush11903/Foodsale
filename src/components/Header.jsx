@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import Modal from "./modal";
 
 const Logo = () => {
-  return <img className="w-[6rem] rounded-full " src={logo} alt="Food Image" />;
+  return <img className="h-[4rem] rounded-full " src={logo} alt="Food Image" />;
 };
 
 const Header = () => {
@@ -16,9 +16,9 @@ const Header = () => {
   const [login, setLogin] = useState(false);
   
   return (
-    <div className="flex  bg-gradient-to-r from-[#f0e68c] to-[#ff9f00] px-2 w-auto  justify-between  ">
+    <div className="flex sticky top-0 z-20 bg-gradient-to-r from-[#fdfdfb] to-[#f7c36b] border border-zinc-100 rounded-md w-auto  justify-between  ">
       <Logo />
-      <div className="w-auto py-6">
+      <div className="w-auto py-3">
         <ul className="flex w-auto space-x-24 text-2xl font-medium  text-[#020202]">
           <li className="text-sm py-3">
             <Link to="/">Home</Link>

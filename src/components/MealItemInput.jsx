@@ -4,12 +4,19 @@ import { useRef, useState } from 'react';
 const MealItemInput = ({addItemHandler,menuItem}) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef();
+  const obj={
+    value: 0,
+    menuItem,
+
+  }
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const enteredAmount = amountInputRef.current.value;
-    addItemHandler(menuItem);
+    obj.value = Number(amountInputRef.current.value);
+    // console.log(obj)
+
+    addItemHandler(obj);
   };
 
   return (

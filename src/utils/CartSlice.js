@@ -10,13 +10,14 @@ const cartSlice=createSlice({
     },
     reducers:{
         addItem: (state, action) => {
-            const item = state.items[action.payload.id];
+          console.log(action.payload)
+            const item = state.items[action.payload.menuItem.id];
             const quantity =
               item && item.hasOwnProperty("quantity")
-                ? state.items[action.payload.id]?.quantity + 1
-                : 1;
-            state.items[action.payload.id] = { ...action.payload, quantity };
-            state.totalItemsCount++;
+                ? state.items[action.payload.menuItem.id]?.quantity + action.payload.value
+                : action.payload.value;
+            state.items[action.payload.menuItem.id] = { ...action.payload.menuItem, quantity };
+            state.totalItemsCount+=action.payload.value;
           },
         removeItem: (state, action) => {
             const item = state.items[action.payload];
