@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addItem } from "../utils/CartSlice";
+import MealItemInput from "./MealItemInput";
 
 
 
@@ -9,6 +10,7 @@ const RestaurantItem = (menuItem) => {
   const dispatch=useDispatch();
 
 const addItemHandler=(item)=>{
+  console.log(item)
   dispatch(addItem(item));
 }
 
@@ -36,10 +38,7 @@ const addItemHandler=(item)=>{
       </div>
       
     </div>
-    <button onClick={()=>addItemHandler(menuItem)}
-    class="bg-gradient-to-r from-orange-300 to-orange-400 hover:bg-black text-red-600 font-bold mt-16 h-[40px] py-2 px-6 rounded-full">
-        Add
-      </button>
+    <MealItemInput addItemHandler={addItemHandler} menuItem={menuItem}/>
     </div>
   );
 };

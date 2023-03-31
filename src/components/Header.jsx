@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 
 
-import CartModal from "./CartModal";
+import Modal from "./modal";
 
 const Logo = () => {
   return <img className="w-[6rem] rounded-full " src={logo} alt="Food Image" />;
@@ -29,9 +29,9 @@ const Header = () => {
           <li className="text-sm py-3">
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
-            <CartModal />
-          </li>
+          <div>
+            <Modal />
+          </div>
           {login ? (
             <button onClick={() => setLogin(false)}>Logout</button>
           ) : (

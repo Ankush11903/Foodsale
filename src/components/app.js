@@ -12,7 +12,6 @@ import RestaurantMenu from './RestaurantMenu'
 import { Provider } from "react-redux";
 import store from "../utils/Store";
 import Cart from "./Cart";
-import Modal from "./modal";
 
 
 const App = () => {
@@ -21,7 +20,6 @@ const App = () => {
       <Header />
       <Outlet />
       <Footer />
-      {/* <Modal /> */}
     </Provider>
   );
 };
