@@ -20,7 +20,7 @@ const cartSlice=createSlice({
           },
         removeItem: (state, action) => {
             const item = state.items[action.payload];
-            console.log(item);
+            // console.log(item);
             if (!item) return;
             if (item.quantity > 1) {
               item.quantity -= 1;

@@ -119,7 +119,7 @@ const RestaurantMenu = () => {
         {/* {console.log(restaurantTop)} */}
         <h1 className="text-xl font-semibold text-gray-600">Recommanded</h1>
         <h4>{menuRestaurant.length} Items</h4>
-        {console.log(menuRestaurant)}
+        {/* {console.log(menuRestaurant)} */}
         {menuRestaurant.map((menuItem) => {
           return <RestaurantItem {...menuItem} key={menuItem.id} />;
         })}
