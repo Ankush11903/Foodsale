@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ShowCart from "./ShowCart";
 import { clearAllItem } from "../utils/CartSlice";
 import { Link } from "react-router-dom";
+import Tilt from "react-parallax-tilt";
 
 function Modal2({ open, onClose, children }) {
   const Modal2Ref = useRef();
@@ -53,6 +54,7 @@ function Modal() {
   // console.log(cartItems)
 
   return (
+    // <Tilt>
     <div className="flex items-center justify-center">
       <button
         className="flex py-1"
@@ -70,60 +72,55 @@ function Modal() {
         </span>
       </button>
       {showModal && (
-        <div className="absolute top-16 left-0 rounded-t-none rounded-lg shadow-2xl ml-[60rem]  bg-gray-200 z-10 border border-t-4 border-t-orange-500    p-4">
-          
-          
-          <div className="flex justify-between py-2">
-          <span className="text-gray-600 font-normal pl-2">Sub Total</span>
-          <span className="text-gray-700 font-bold mr-5 ">
-            ₹ {parseInt(cartTotal)}
-          </span>
-        </div>
-          <div className="absolute -top-2 left-12 w-3 h-3 bg-gray-200 border-t-4 border-l-4 border-orange-500 transform rotate-45 z-10"></div>
-
-          {Object.values(cartItems).map((item) => {
-          return (
-            <div className="max-h-[60vh] w-full overflow-y-auto bg-white rounded-lg shadow-xl p-2">
-            <ul key={item?.id} className="border-b border-gray-300">
-              <li className="flex items-center justify-between">
-                <div className="flex items-center p-1">
-                  <img
-                    src={
-                      "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
-                      item?.imageId
-                    }
-                    alt={item?.name}
-                    className="w-10 h-10 object-cover rounded-lg mr-4"
-                  />
-                  <div>
-                    <h2 className="font-bold text-xs">{item?.name}</h2>
-                    <div className="flex items-center">
-                      <span className="text-gray-500 font-medium text-sm mr-2">
-                        ₹
-                        {item?.price
-                          ? parseInt(item?.price / 100)
-                          : parseInt(item?.defaultPrice / 100)}
-                      </span>
-                      <span className="text-gray-400 text-sm">
-                        x {item?.quantity}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              
-            </ul>
-            </div>
-          );
-        })}
         
+          <div className="absolute top-16 left-0 rounded-t-none rounded-lg shadow-2xl ml-[60rem]  bg-gray-200 z-10 border border-t-4 border-t-orange-500    p-4">
+            <div className="flex justify-between py-2">
+              <span className="text-gray-600 font-normal pl-2">Sub Total</span>
+              <span className="text-gray-700 font-bold mr-5 ">
+                ₹ {parseInt(cartTotal)}
+              </span>
+            </div>
+            <div className="absolute -top-2 left-12 w-3 h-3 bg-gray-200 border-t-4 border-l-4 border-orange-500 transform rotate-45 z-10"></div>
 
-
-
-        </div>
+            {Object.values(cartItems).map((item) => {
+              return (
+                <div className="max-h-[60vh] w-full overflow-y-auto bg-white rounded-lg shadow-xl p-2">
+                  <ul key={item?.id} className="border-b border-gray-300">
+                    <li className="flex items-center justify-between">
+                      <div className="flex items-center p-1">
+                        <img
+                          src={
+                            "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/" +
+                            item?.imageId
+                          }
+                          alt={item?.name}
+                          className="w-10 h-10 object-cover rounded-lg mr-4"
+                        />
+                        <div>
+                          <h2 className="font-bold text-xs">{item?.name}</h2>
+                          <div className="flex items-center">
+                            <span className="text-gray-500 font-medium text-sm mr-2">
+                              ₹
+                              {item?.price
+                                ? parseInt(item?.price / 100)
+                                : parseInt(item?.defaultPrice / 100)}
+                            </span>
+                            <span className="text-gray-400 text-sm">
+                              x {item?.quantity}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        
       )}
-
-      <Modal2 open={showModal2} onClose={() => setShowModal2(false)}>
+      
+      <Modal2 open={showModal2} onClose={() => setShowModal2(false)}><Tilt>
         <div className="flex ">
           <h1 className="font-bold">Cart </h1>
           <h1 className="text-zinc-600 ml-4 pt-2 text-sm">
@@ -154,7 +151,7 @@ function Modal() {
               Checkout
             </button>
           </Link>
-        </div>
+        </div></Tilt>
       </Modal2>
     </div>
   );

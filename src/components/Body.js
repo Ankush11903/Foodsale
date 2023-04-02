@@ -143,7 +143,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap">
         {restaurant?.length === 0 ? (
           <Shimmer />
         ) : (
