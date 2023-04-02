@@ -32,6 +32,7 @@ const Header = () => {
           <div>
             <Modal />
           </div>
+          
           {login ? (
             <button onClick={() => setLogin(false)}>Logout</button>
           ) : (
