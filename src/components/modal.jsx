@@ -57,17 +57,17 @@ function Modal() {
     // <Tilt>
     <div className="flex items-center justify-center">
       <button
-        className="flex pt-2"
+        className={`flex pt-2 hover:text-orange-600 transition-colors duration-300 ${totalItemsCount? `text-[#60b246]` :  `text-[#282c3f]`}`}
         onClick={() => setShowModal2(true)}
         onMouseEnter={() => setShowModal(true)}
         onMouseLeave={() => setShowModal(false)}
       >
-        <span className="w-[2rem]  text-orange-500">
+        <span className= {`w-[2rem]  `}>
           <CartIcon />
         </span>
 
-        <span className="font-bold text-xs my-2 text-orange-500">Your Cart</span>
-        <span className=" px-1 font-bold text-lg pt-[0.14rem]  text-orange-500">
+        <span className={`font-medium text-base mt-1  `}>Cart</span>
+        <span className={` px-1 font-bold text-lg pt-[0.14rem]   `}>
           {totalItemsCount}
         </span>
       </button>
