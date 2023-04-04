@@ -43,37 +43,38 @@ const Header = () => {
 
   return (
     <div className=" flex sticky top-0 z-20 bg-white shadow-md ">
-      <div className="w-1/2">
+      <div className="w-1/2 flex justify-between">
         <Logo />
-      </div>
-      
-      {/* <div className="w-1/2 py-3 "> */}
-        <ul className="flex space-x-24 text-2xl font-medium  text-[#020202] justify-around py-3">
-          
-            <li className="text-lg py-3 hover:text-orange-600 transition-colors duration-300">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="text-lg py-3 hover:text-orange-600 transition-colors duration-300">
-              <Link to="/about">About</Link>
-            </li>
-            <li className="text-lg py-3 hover:text-orange-600 transition-colors duration-300">
-              <Link to="/contact">Contact</Link>
-            </li>
-            <li>
-              <Modal />
-            </li>
-            {login ? (
-              <li className="text-lg py-3 hover:text-orange-600 transition-colors duration-300 w-20">
-                <button onClick={() => setLogin(false)}>Logout</button>
-              </li>
-            ) : (
-              <li className="text-lg py-3 hover:text-orange-600 transition-colors duration-300 w-20">
-                <button onClick={() => setLogin(true)}>Login</button>
-              </li>
-            )}
-          </ul>
         
       </div>
+
+      {/* <div className="w-1/2 py-3 "> */}
+      <ul className="flex space-x-24 text-2xl font-medium  text-[#020202] justify-around py-3">
+        
+        <li className="text-lg py-3 hover:text-orange-600 transition-colors duration-300">
+          <Link to="/">Home</Link>
+        </li>
+        <li className="text-lg py-3 hover:text-orange-600 transition-colors duration-300">
+          <Link to="/about">About</Link>
+        </li>
+        <li className="text-lg py-3 hover:text-orange-600 transition-colors duration-300">
+          <Link to="/contact">Contact</Link>
+        </li>
+        <li>
+          <Modal />
+        </li>
+        {login ? (
+          <li className="text-lg py-3 hover:text-orange-600 transition-colors duration-300 w-20">
+            <button onClick={() => setLogin(false)}>Logout</button>
+          </li>
+        ) : (
+          <li className="text-lg py-3 hover:text-orange-600 transition-colors duration-300 w-20">
+            <button onClick={() => setLogin(true)}>Login</button>
+          </li>
+        )}
+        
+      </ul>
+    </div>
     // </div>
   );
 };
