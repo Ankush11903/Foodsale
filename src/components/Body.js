@@ -14,7 +14,7 @@ function fliterData(restaurant, searchText) {
 
 const Body = () => {
   const [searchText, setSearchText] = useState("");
-  const [restaurant, setRestaurant] = useState("");
+  const [restaurant, setRestaurant] = useState([]);
   const [allRestaurant, setAllRestaurant] = useState("");
   const [cart, setCart] = useState(15);
   const [carouselData, setCarouselData] = useState([]);
@@ -31,13 +31,13 @@ const Body = () => {
     );
     let da = await response.json();
     console.log(da);
+    setCarouselData(da?.data?.cards[0]?.data?.data?.cards);
 
     rest = da?.data?.cards[2]?.data?.data?.cards?.map((x) => x.data);
     setNoOfRestaurant(da?.data?.cards[2]?.data?.data?.totalRestaurants);
 
-    setRestaurant(rest);
     setAllRestaurant(rest);
-    setCarouselData(da?.data?.cards[0]?.data?.data?.cards);
+    setRestaurant(rest);
   }
 
   async function callApiHandler2() {
@@ -82,61 +82,70 @@ const Body = () => {
 
   return (
     <>
-      <div className=" bg-[#171a29]">
-        <FoodCarousel data={carouselData} />
-      </div>
-      <div className="flex justify-between">
-        <div className="font-semibold text-[#232737] text-2xl pt-10 pl-8 pb-2">
-          {noOfRestaurant} restaurants
-        </div>
-        <div className="search-container mx-72 py-6 flex">
-          <input
-            type="text"
-            className="search-input border border-[#e4e3e3] rounded-md"
-            placeholder="Search"
-            value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
-          />
-          <button
-            className="search-btn mx-3 font-normal"
-            onClick={() => {
-              let data = fliterData(allRestaurant, searchText);
-              setRestaurant(data);
-            }}
-          >
-            Search
-          </button>
-        </div>
-      </div>
-
-      <hr className="border-[#e4e3e3] mx-8 " />
-      <div className="flex flex-wrap ">
-        {restaurant?.length === 0 ? (
+      <>
+        {carouselData?.length === 0 ? (
           <Shimmer />
         ) : (
-          restaurant?.map((restaurant) => {
+          <div className=" bg-[#171a29]">
+            <FoodCarousel data={carouselData} />
+          </div>
+        )}
+
+        <div className="flex justify-between">
+          <div className="font-semibold text-[#232737] text-2xl pt-10 pl-8 pb-2">
+            {noOfRestaurant} restaurants
+          </div>
+          <div className="search-container mx-72 py-6 flex">
+            <input
+              type="text"
+              class="search-input border border-gray-300 rounded-md px-4 py-2 w-full"
+              placeholder="Search"
+              value={searchText}
+              onChange={(e) => {
+                setSearchText(e.target.value);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  let data = fliterData(allRestaurant, searchText);
+                  setRestaurant(data);
+                }
+              }}
+            />
+            <button
+              class="search-btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mx-3"
+              onClick={() => {
+                let data = fliterData(allRestaurant, searchText);
+                setRestaurant(data);
+              }}
+            >
+              Search
+            </button>
+          </div>
+        </div>
+        <hr className="border-[#e4e3e3] mx-8 " />
+        <div className="flex flex-wrap ">
+          {restaurant?.map((restaurant) => {
             return (
               <RestaurantCard {...restaurant} key={restaurant?.data?.id} />
             );
-          })
-        )}
-        {Array(1)
-          .fill("")
-          .map((e, index) => (
-            <div
-              key={index}
-              className=" animate-pulse w-[254px] h-[220px] p-3 m-5 border border-slate-200 rounded-md bg-[#fdfdfd]"
-            >
-              <div className="animate-pulse w-full h-[135px] border border-neutral-300 rounded-md bg-gray-100"></div>
+          })}
 
-              <p class="leading-relaxed mt-4 mb-2 w-full h-3 animate-pulse bg-gray-200 rounded-sm"></p>
-              <p class="leading-relaxed mt-2 mb-1 w-2/3 h-3 animate-pulse bg-gray-200 rounded-sm"></p>
-              <p class="leading-relaxed  w-1/5 h-3 animate-pulse bg-gray-200 rounded-sm"></p>
-            </div>
-          ))}
-      </div>
+          {Array(1)
+            .fill("")
+            .map((e, index) => (
+              <div
+                key={index}
+                className=" animate-pulse w-[254px] h-[220px] p-3 m-5 border border-slate-200 rounded-md bg-[#fdfdfd]"
+              >
+                <div className="animate-pulse w-full h-[135px] border border-neutral-300 rounded-md bg-gray-100"></div>
+
+                <p class="leading-relaxed mt-4 mb-2 w-full h-3 animate-pulse bg-gray-200 rounded-sm"></p>
+                <p class="leading-relaxed mt-2 mb-1 w-2/3 h-3 animate-pulse bg-gray-200 rounded-sm"></p>
+                <p class="leading-relaxed  w-1/5 h-3 animate-pulse bg-gray-200 rounded-sm"></p>
+              </div>
+            ))}
+        </div>
+      </>
     </>
   );
 };
