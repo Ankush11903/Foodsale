@@ -18,7 +18,9 @@ const Body = () => {
   const [restaurant, setRestaurant] = useState("");
   const [allRestaurant, setAllRestaurant] = useState("");
   const [cart, setCart] = useState(15);
+  const [carouselData, setCarouselData] = useState([]);
   let rest = [];
+  const [noOfRestaurant, setNoOfRestaurant] = useState(0);
 
   useEffect(() => {
     callApiHandler();
@@ -34,11 +36,13 @@ const Body = () => {
     // setRestaurant(da?.data?.cards[2]?.data?.data?.cards);
     // console.log(restaurant);
     rest = da?.data?.cards[2]?.data?.data?.cards?.map((x) => x.data);
+    setNoOfRestaurant(da?.data?.cards[2]?.data?.data?.totalRestaurants);
     // console.log(allRestaurant);
 
     // console.log(rest)
     setRestaurant(rest);
     setAllRestaurant(rest);
+    setCarouselData(da?.data?.cards[0]?.data?.data?.cards);
     // console.log(allRestaurant)
 
     // setLoading(false);
@@ -130,8 +134,10 @@ const Body = () => {
           Search
         </button>
       </div> */}
-      <div className=" bg-[#171a29] py-20 w-full h-[calc(1vh+21rem)]" ><FoodCarousel /></div>
-      <div className="flex flex-wrap">
+      <div className=" bg-[#171a29]" ><FoodCarousel data={carouselData}/></div>
+      <div className="font-semibold text-[#232737] text-3xl pt-10 pl-8 pb-2">{noOfRestaurant} restaurants</div>
+      <hr className="border-[#e4e3e3] mx-8 " />
+      <div className="flex flex-wrap ">
         {restaurant?.length === 0 ? (
           <Shimmer />
         ) : (
