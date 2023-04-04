@@ -2,8 +2,8 @@ import restaurantList from "../config";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./shimmer";
-import {Link} from 'react-router-dom';
-
+import { Link } from "react-router-dom";
+import FoodCarousel from "./foodCarousel";
 
 function fliterData(restaurant, searchText) {
   // console.log(restaurant);
@@ -13,19 +13,16 @@ function fliterData(restaurant, searchText) {
   return filterData;
 }
 
-
 const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [restaurant, setRestaurant] = useState("");
   const [allRestaurant, setAllRestaurant] = useState("");
-  const [cart,setCart]=useState(15);
-  let rest=[];
+  const [cart, setCart] = useState(15);
+  let rest = [];
 
   useEffect(() => {
     callApiHandler();
   }, []);
-
-  
 
   async function callApiHandler() {
     // setLoading(true);
@@ -33,15 +30,12 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6126255&lng=77.04108959999999&page_type=DESKTOP_WEB_LISTING"
     );
     let da = await response.json();
-    // console.log(da);
+    console.log(da);
     // setRestaurant(da?.data?.cards[2]?.data?.data?.cards);
     // console.log(restaurant);
-    rest=(da?.data?.cards[2]?.data?.data?.cards?.map((x) => x.data));
+    rest = da?.data?.cards[2]?.data?.data?.cards?.map((x) => x.data);
     // console.log(allRestaurant);
 
-
-
-    
     // console.log(rest)
     setRestaurant(rest);
     setAllRestaurant(rest);
@@ -58,29 +52,27 @@ const Body = () => {
     let dat = await response2.json();
     // console.log("dat",dat)
     // setRestaurant(...restaurant,dat?.data?.cards);
-    rest?.push( ...dat?.data?.cards?.map((x) => x)
-    ?.filter(
-      (x) => 
-        x.cardType ==
-        "restaurant"
-    )
-    ?.flat()
-    .map((x) => 
-    // console.log(x.data.data)
-    x.data?.data
-    ) );
+    rest?.push(
+      ...dat?.data?.cards
+        ?.map((x) => x)
+        ?.filter((x) => x.cardType == "restaurant")
+        ?.flat()
+        .map(
+          (x) =>
+            // console.log(x.data.data)
+            x.data?.data
+        )
+    );
 
-    
     // console.log(rest)
-    setRestaurant((prev)=>[...prev,...rest]);
-    setAllRestaurant((prev)=>[...prev,...rest]);
+    setRestaurant((prev) => [...prev, ...rest]);
+    setAllRestaurant((prev) => [...prev, ...rest]);
     // loading=false;
     // console.log(allRestaurant)
 
     // setLoading(false);
-    
   }
-  
+
   useEffect(() => {
     // console.log("calling")
     callApiHandler2();
@@ -91,7 +83,7 @@ const Body = () => {
       // console.log("unmounting")
       // loading=false;
       // setLoading(false);
-    }
+    };
   }, [cart]);
 
   const handelInfiniteScroll = async () => {
@@ -100,30 +92,25 @@ const Body = () => {
     // console.log("scrollTop" + document.documentElement.scrollTop);
     try {
       if (
-        window.innerHeight + document.documentElement.scrollTop +1 >=
-        document.documentElement.scrollHeight 
+        window.innerHeight + document.documentElement.scrollTop + 1 >=
+        document.documentElement.scrollHeight
       ) {
         // setLoading(true);
         setCart((prev) => prev + 16);
-        
-        
       }
     } catch (error) {
       // console.log(error);
     }
-    
   };
-
 
   useEffect(() => {
     window.addEventListener("scroll", handelInfiniteScroll);
     return () => window.removeEventListener("scroll", handelInfiniteScroll);
   }, []);
 
-
   return (
     <>
-      <div className="search-container mx-72 py-6 flex">
+      {/* <div className="search-container mx-72 py-6 flex">
         <input
           type="text"
           className="search-input border border-[#e4e3e3] rounded-md"
@@ -142,11 +129,14 @@ const Body = () => {
         >
           Search
         </button>
-      </div>
+      </div> */}
+      <div className=" bg-[#171a29] py-20 w-full h-[calc(1vh+21rem)]" ><FoodCarousel /></div>
       <div className="flex flex-wrap">
         {restaurant?.length === 0 ? (
           <Shimmer />
         ) : (
+          // <>
+          
           restaurant?.map((restaurant) => {
             return (
               // console.log(restaurant)
@@ -165,8 +155,8 @@ const Body = () => {
               {/* <br /> */}
 
               <p class="leading-relaxed mt-4 mb-2 w-full h-3 animate-pulse bg-gray-200 rounded-sm"></p>
-            <p class="leading-relaxed mt-2 mb-1 w-2/3 h-3 animate-pulse bg-gray-200 rounded-sm"></p>
-            <p class="leading-relaxed  w-1/5 h-3 animate-pulse bg-gray-200 rounded-sm"></p>
+              <p class="leading-relaxed mt-2 mb-1 w-2/3 h-3 animate-pulse bg-gray-200 rounded-sm"></p>
+              <p class="leading-relaxed  w-1/5 h-3 animate-pulse bg-gray-200 rounded-sm"></p>
             </div>
           ))}
       </div>

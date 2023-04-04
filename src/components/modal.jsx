@@ -57,17 +57,17 @@ function Modal() {
     // <Tilt>
     <div className="flex items-center justify-center">
       <button
-        className="flex py-1"
+        className="flex pt-2"
         onClick={() => setShowModal2(true)}
         onMouseEnter={() => setShowModal(true)}
         onMouseLeave={() => setShowModal(false)}
       >
-        <span className="w-[2rem]  text-white ">
+        <span className="w-[2rem]  text-orange-500">
           <CartIcon />
         </span>
 
-        <span className="font-bold text-xs my-2 text-white">Your Cart</span>
-        <span className=" px-1 font-bold text-lg pt-[0.14rem]  text-white">
+        <span className="font-bold text-xs my-2 text-orange-500">Your Cart</span>
+        <span className=" px-1 font-bold text-lg pt-[0.14rem]  text-orange-500">
           {totalItemsCount}
         </span>
       </button>

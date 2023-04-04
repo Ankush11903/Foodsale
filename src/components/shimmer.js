@@ -3,7 +3,7 @@ import React from "react";
 const Shimmer = () => {
   return (
         <div className="flex flex-wrap justify-center  ">
-          {Array(15)
+          {Array(16)
             .fill("")
             .map((e, index) => (
               <div

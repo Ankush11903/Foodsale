@@ -16,7 +16,7 @@ import Cart from "./Cart";
 
 const App = () => {
   return (
-    <Provider store={store}>
+    <Provider store={store} >
       <Header />
       <Outlet />
       <Footer />
