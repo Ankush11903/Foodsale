@@ -11,15 +11,15 @@ const Logo = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       // console.log(logoRef.current);
-      logoRef.current.style.transform = "translateX(300px)";
-      logoRef.current.style.transition = "transform 2s ease-in-out";
-      logoRef.current.src = logo;
+      // logoRef.current.style.transform = "translateX(300px)";
+      // logoRef.current.style.transition = "transform 2s ease-in-out";
+      // logoRef.current.src = logo;
 
-      setTimeout(() => {
-        logoRef.current.style.transform = "translateX(-10px)";
+      // setTimeout(() => {
+        logoRef.current.style.transform = "translateX(-100px)";
         logoRef.current.style.transition = "transform 2s ease-in-out";
         logoRef.current.src = logo2;
-      }, 2000);
+      // }, 2000);
     }, 4000);
 
     return () => clearInterval(interval);
@@ -28,7 +28,7 @@ const Logo = () => {
   return (
     <Link to="/">
       <img
-        className="h-[4rem] ml-3"
+        className="h-[4rem] ml-96"
         ref={logoRef}
         src={logo}
         alt="Food Image"
