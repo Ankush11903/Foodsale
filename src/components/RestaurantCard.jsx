@@ -1,6 +1,5 @@
 import react from "react";
 import { Link } from "react-router-dom";
-import Tilt from "react-parallax-tilt";
 import { AiFillStar } from "react-icons/Ai";
 import {CiDiscount1} from "react-icons/ci"
 

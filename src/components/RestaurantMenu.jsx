@@ -5,6 +5,7 @@ import { addItem } from "../utils/CartSlice";
 import MealItemInput from "./MealItemInput";
 
 import ShowContent from "./showContent";
+import { RestaurantData } from "../config";
 
 
 
@@ -50,16 +51,61 @@ const RestaurantMenu = () => {
   
 
   useEffect(() => {
-    getRestaurantInfo();
+    try {
+      getRestaurantInfo()
+        .then(response => {
+          // handle the response here
+        })
+        .catch(error => {
+          console.error(error);
+          // handle the error here
+          console.log(RestaurantData);
+      const data = RestaurantData[id]?.data;
+      console.log("data")
+    console.log(data);
+    console.log(id)
+    const menuItems =
+      data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+        ?.map((x) => x.card?.card)
+        ?.filter(
+          (x) =>
+            x["@type"] ==
+            "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+        );
+    // console.log(menuItems);
+    setMenuRestaurant(menuItems);
+    setRestaurantTop(data);
+
+        });
+    } catch (error) {
+      console.log(RestaurantData);
+      const data = RestaurantData[id]?.data;
+      console.log("data")
+    console.log(data);
+    console.log(id)
+    const menuItems =
+      data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+        ?.map((x) => x.card?.card)
+        ?.filter(
+          (x) =>
+            x["@type"] ==
+            "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+        );
+    // console.log(menuItems);
+    setMenuRestaurant(menuItems);
+    setRestaurantTop(data);
+    }
+    
   }, []);
 
   async function getRestaurantInfo() {
-    const response = await fetch(
+    let response = await fetch(
       "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6126255&lng=77.04108959999999&restaurantId=" +
         id
     );
     const json = await response.json();
-    // console.log(json)
+    console.log("json")
+    console.log(json)
     const data = json?.data;
     // console.log(data);
     const menuItems =
