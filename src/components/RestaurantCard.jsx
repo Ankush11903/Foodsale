@@ -27,7 +27,7 @@ const RestraurantCard = ({
     );
   return (
     <Link to={"/restaurant/" + id}>
-      <Tilt>
+      {/* <Tilt> */}
         <div className="w-[290px] relative  py-6 mx-3 flex-wrap break-words">
           <div className="p-4 rounded-md  hover:shadow-xl hover:border hover:border-zinc-300">
             <img
@@ -78,7 +78,7 @@ const RestraurantCard = ({
             
           </div>
         </div>
-      </Tilt>
+      {/* </Tilt> */}
     </Link>
   );
 };

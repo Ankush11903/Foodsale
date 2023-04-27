@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import ShowCart from "./ShowCart";
 import { clearAllItem } from "../utils/CartSlice";
 import { Link } from "react-router-dom";
-import Tilt from "react-parallax-tilt";
+
 
 function Modal2({ open, onClose, children }) {
   const Modal2Ref = useRef();
@@ -120,7 +120,7 @@ function Modal() {
         
       )}
       
-      <Modal2 open={showModal2} onClose={() => setShowModal2(false)}><Tilt>
+      <Modal2 open={showModal2} onClose={() => setShowModal2(false)}>
         <div className="flex ">
           <h1 className="font-bold">Cart </h1>
           <h1 className="text-zinc-600 ml-4 pt-2 text-sm">
@@ -151,7 +151,7 @@ function Modal() {
               Checkout
             </button>
           </Link>
-        </div></Tilt>
+        </div>
       </Modal2>
     </div>
   );
