@@ -19,10 +19,6 @@ const Logo = () => {
       setTimeout(() => {
         logoRef.current.src = logo;
       }, 3500);
-    
-
-    
-    // return () => clearInterval(interval);
   }, []);
 
   return (
