@@ -5,9 +5,9 @@ import Header  from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
 import {createBrowserRouter,RouterProvider,Outlet} from 'react-router-dom';
-// import Error from './Error'
+
 const Error =lazy(()=>import('./Error'))
-// import About from "./Abxout";
+
 const About=lazy(()=>import("./About"));
 const Contact=lazy(()=>import ('./Contact'))
 import RestaurantMenu from './RestaurantMenu'
