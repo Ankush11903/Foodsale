@@ -1,13 +1,15 @@
-import React from "react";
+import React,{Suspense,lazy} from "react";
 import ReactDOM from "react-dom/client";
 
 import Header  from "./Header";
 import Body from "./Body";
 import Footer from "./Footer";
 import {createBrowserRouter,RouterProvider,Outlet} from 'react-router-dom';
-import Error from './Error'
-import About from "./About";
-import Contact from './Contact';
+
+const Error =lazy(()=>import('./Error'))
+
+const About=lazy(()=>import("./About"));
+const Contact=lazy(()=>import ('./Contact'))
 import RestaurantMenu from './RestaurantMenu'
 import { Provider } from "react-redux";
 import store from "../utils/Store";
@@ -28,7 +30,7 @@ const appRouter= createBrowserRouter([
   {
     path:"/",
     element:<App/>,
-    errorElement:<Error />,
+    errorElement:<Suspense><Error /></Suspense>,
     children:[
       {
         path:"/",
@@ -36,11 +38,11 @@ const appRouter= createBrowserRouter([
       },
       {
         path:"/about",
-        element:<About/>,
+        element:<Suspense><About/></Suspense>,
       },
       {
         path:"/Contact",
-        element:<Contact/>,
+        element:<Suspense><Contact/></Suspense>,
       },
       {
         path:"/Restaurant/:id",
