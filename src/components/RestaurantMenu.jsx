@@ -100,7 +100,7 @@ const RestaurantMenu = () => {
 
   async function getRestaurantInfo() {
     let response = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6126255&lng=77.04108959999999&restaurantId=" +
+      "https://foodsale.onrender.com/api/menu?restaurantId=" +
         id
     );
     const json = await response.json();

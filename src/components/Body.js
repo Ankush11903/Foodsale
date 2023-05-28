@@ -54,7 +54,7 @@ const Body = () => {
 
   async function callApiHandler() {
     let response = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6126255&lng=77.04108959999999&page_type=DESKTOP_WEB_LISTING"
+      "https://foodsale.onrender.com/api/restaurants"
     );
     let da = await response.json();
     console.log(da);
@@ -69,7 +69,7 @@ const Body = () => {
 
   async function callApiHandler2() {
     let response2 = await fetch(
-      `https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6126255&lng=77.04108959999999&offset=${cart}&sortBy=RELEVANCE&pageType=SEE_ALL&page_type=DESKTOP_SEE_ALL_LISTING`
+      `https://foodsale.onrender.com/api/restaurants2?cart=${cart}`
     );
     let dat = await response2.json();
 
