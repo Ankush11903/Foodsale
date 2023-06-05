@@ -100,7 +100,7 @@ const RestaurantMenu = () => {
 
   async function getRestaurantInfo() {
     let response = await fetch(
-      "https://foodsale.onrender.com/api/menu?restaurantId=" +
+      "https://food-sale-server.vercel.app/api/menu?restaurantId=" +
         id
     );
     const json = await response.json();

@@ -54,7 +54,7 @@ const Body = () => {
 
   async function callApiHandler() {
     let response = await fetch(
-      "https://foodsale.onrender.com/api/restaurants"
+      "https://food-sale-server.vercel.app/api/restaurants"
     );
     let da = await response.json();
     console.log(da);
@@ -69,7 +69,7 @@ const Body = () => {
 
   async function callApiHandler2() {
     let response2 = await fetch(
-      `https://foodsale.onrender.com/api/restaurants2?cart=${cart}`
+      `https://food-sale-server.vercel.app/api/restaurants2?cart=${cart}`
     );
     let dat = await response2.json();
 
